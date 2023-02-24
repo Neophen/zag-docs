@@ -2,7 +2,7 @@
 <script setup>
   import * as combobox from "@zag-js/combobox"
   import { normalizeProps, useMachine } from "@zag-js/vue"
-  import { computed } from "vue"
+  import { computed, ref } from "vue"
 
   const comboboxData = [
     { label: "Zambia", code: "ZA" },
@@ -42,9 +42,9 @@
     </div>
   </div>
   <div v-bind="api.positionerProps">
-    <ul v-if="options.value.length > 0" v-bind="api.contentProps">
+    <ul v-if="options.length > 0" v-bind="api.contentProps">
       <li
-        v-for="item in options.value"
+        v-for="(item, index) in options"
         :key="item.code"
         v-bind="api.getOptionProps({
           label: item.label,
